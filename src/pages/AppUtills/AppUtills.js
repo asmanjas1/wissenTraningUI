@@ -11,7 +11,7 @@ export function getLocalUser() {
     if (uName) {
         return true;
     }
-    window.location.href='/Login';
+  //  window.location.href='/Login';
     
     return false;
 
