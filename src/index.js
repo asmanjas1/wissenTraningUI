@@ -10,7 +10,7 @@ ReactDOM.render(
   <BrowserRouter basename={process.env.REACT_APP_ROUTER_BASE || ''}>
     <div>
 
-            <div className="main-cls" style={{minWidth: '1100px'}}>
+            <div className="main-cls" >
                 <div>
                     <Switch>
                         <Route path="/r" component={App}/>

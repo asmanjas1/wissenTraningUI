@@ -1,0 +1,18 @@
+.username1 {
+      position: absolute;
+      text-shadow: black;
+      right: 280px;;
+      top: 20px;
+      color: blue;
+      
+    }
+
+
+    .navigationstyle {
+      box-shadow: 0px 0px 5px 0px black;
+     
+    }
+
+.wissenlogo:hover {
+  transform: scale(1.5)translateX(50px);
+}
