@@ -3,29 +3,22 @@ export function saveLocalUsr(object) {
     
 }
 
-export function getLocalUser() {
-    
-    var uName= localStorage.getItem('user');
-    console.log(uName);
-    
-    if (uName) {
-        return true;
-    }
-  //  window.location.href='/Login';
-    
-    return false;
-
-}
 export function doLogout() {
-    
-    localStorage.removeItem('user');
-
-localStorage.clear();
-    window.location.href='/Login'; 
-//alert("Click on OK to confirm Logout" );
+  localStorage.removeItem('user');
+  localStorage.clear();
+  window.location.href='/r/Login'; 
 }
 
-
+export function routingUserType () {
+  let userObj = localStorage.getItem('user');
+  if( userObj ) {
+    let userType = userObj.isAdmin;
+    if(userType)
+      window.location.href = "/r/adminLandingPae";
+    else
+      window.location.href = "/r/userLandingPage";
+  }
+}
  
 
 

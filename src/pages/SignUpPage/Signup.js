@@ -1,7 +1,5 @@
 import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import style from './Signup.css';
-
+import './Signup.css';
 
 class Signup extends React.Component {
   constructor() {
@@ -22,9 +20,7 @@ class Signup extends React.Component {
     }
   }
 
-  valid() {
-    var uname = "sneha";
-    
+  valid() {    
       var upattern = /^[A-Za-z]+$/;
       var eidpattern=/^[0-9]+$/;
       var emailpattern=/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;

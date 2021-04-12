@@ -1,11 +1,8 @@
 import React from 'react';
 import 'font-awesome/css/font-awesome.min.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import './Login.css';
 
-
-
-import {saveLocalUsr}  from '../AppUtills/AppUtills';
+import {saveLocalUsr, routingUserType}  from '../AppUtills/AppUtills';
 
 
 class Login extends React.Component {
@@ -22,6 +19,10 @@ class Login extends React.Component {
     this.doLogin = this.doLogin.bind(this);
     
   };
+
+  componentDidMount() {
+    routingUserType();
+  }
 
   handleChange(e) {
 
@@ -45,7 +46,7 @@ class Login extends React.Component {
       this.setState({ fields: fields });
       saveLocalUsr(this.state.fields["Username"]);
       
-      window.location.href='/Home';
+      routingUserType();
       
     }
     
@@ -104,7 +105,7 @@ class Login extends React.Component {
            
 
 
-              <form className="for-container "  onsubmit={this.doLogin} >
+              <form className="for-container "  >
                 <div className="form-group" >
                   <p style={{ textAlign: "center"}}><b>User login</b> </p>
                   <label for="username">Username </label>
@@ -133,16 +134,16 @@ class Login extends React.Component {
                  
                 </div>
 
-                  <div class="form-check ">
-                  <input type="checkbox" class="form-check-input" id="exampleCheck1" />
-                  <label class="form-check-label" for="exampleCheck1">Remember me</label>
+                  <div className="form-check ">
+                  <input type="checkbox" className="form-check-input" id="exampleCheck1" />
+                  <label className="form-check-label" for="exampleCheck1">Remember me</label>
                    </div>
   
 
                 <div className="d-flex justify-content-center">
                   <button type="submit" className="btn btn-primary btn-sm mr-1"  onClick={this.doLogin} >Login</button>
                 
-                  <a className="btn btn-primary btn-sm mr-1" href="/signupform" style={{ color: "white" }}> Sign Up </a>
+                  <a className="btn btn-primary btn-sm mr-1" href="/r/signupform" style={{ color: "white" }}> Sign Up </a>
 
                 </div>
 

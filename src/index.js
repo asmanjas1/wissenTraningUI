@@ -5,6 +5,7 @@ import App from './App';
 import NotFound from './pages/commonComponents/NotFound.js';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
+import SecuredRoute from './pages/AppUtills/SecuredRoute';
 
 ReactDOM.render(
   <BrowserRouter basename={process.env.REACT_APP_ROUTER_BASE || ''}>
@@ -13,7 +14,7 @@ ReactDOM.render(
             <div className="main-cls" >
                 <div>
                     <Switch>
-                        <Route path="/r" component={App}/>
+                        <SecuredRoute path="/r" component={App}/>
                         <Route exact path="/" render={() => (
                             <Redirect to="/r"/>
                         )}/>
