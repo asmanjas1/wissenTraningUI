@@ -13,6 +13,8 @@ import Signup from './pages/SignUpPage/Signup';
 
 import  AdminAction from './pages/AdminActionPage/AdminActionPage.js';
 import  Profile from './pages/ProfilePage/ProfilePage.js';
+import References from './pages/ReferencesPage/References.js';
+import Assessment from './pages/AssessmentPage/Assessment.js';
 
 
 import './App.css';
@@ -47,6 +49,8 @@ class App extends React.Component {
                 			<Route path="/r/signup" component={Signup}/>
                 			<Route path="/r/AdminActionPage" component={AdminAction}/>
                 			<Route path="/r/ProfilePage" component={Profile}/>
+                			<Route path="/r/references" component={References}/>
+                			<Route path="/r/assessment" component={Assessment}/>
 
                 			<Route path="*" component={NotFound} />
             			</Switch>

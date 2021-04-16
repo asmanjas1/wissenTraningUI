@@ -9,6 +9,7 @@
     "@testing-library/jest-dom": "^5.11.10",
     "@testing-library/react": "^11.2.6",
     "@testing-library/user-event": "^12.8.3",
+    "axios": "^0.21.1",
     "bootstrap": "^4.6.0",
     "create-react-nav": "^2.6.4",
     "font-awesome": "^4.7.0",
@@ -24,6 +25,7 @@
     "react-navbar-dropdown": "^1.4.3",
     "react-router-dom": "^5.2.0",
     "react-scripts": "^4.0.3",
+    "react-select": "^4.3.0",
     "react-simple-sidenav": "^2.0.0",
     "reactjs-navbar": "^1.0.2",
     "web-vitals": "^1.1.1"
