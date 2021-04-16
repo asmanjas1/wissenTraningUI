@@ -1,5 +1,6 @@
 import React from 'react';
 import './Signup.css';
+import {saveLocalfname,saveLocallname}  from '../AppUtills/AppUtills';
 
 class Signup extends React.Component {
   constructor() {
@@ -74,9 +75,13 @@ class Signup extends React.Component {
 
      
     if (this.valid()) {
-      
-     // saveLocalUsr({usrname: this.state.name });
-     window.alert("Signup");
+       
+     saveLocalfname({fName: this.state.fname });
+     saveLocallname({lName: this.state.lname });
+    // window.alert("Signup");
+
+       window.location.href='/r/login'; 
+
   
 
     }
