@@ -6,6 +6,7 @@ import NotFound from './pages/commonComponents/NotFound.js';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import SecuredRoute from './pages/AppUtills/SecuredRoute';
+import Signup from './pages/SignUpPage/Signup';
 
 ReactDOM.render(
   <BrowserRouter basename={process.env.REACT_APP_ROUTER_BASE || ''}>
@@ -18,6 +19,7 @@ ReactDOM.render(
                         <Route exact path="/" render={() => (
                             <Redirect to="/r"/>
                         )}/>
+                        <Route path="/signup" component={Signup} />
                         <Route path="*" component={NotFound} />
                     </Switch>
                 </div>

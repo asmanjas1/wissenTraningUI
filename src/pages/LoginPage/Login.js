@@ -143,7 +143,7 @@ class Login extends React.Component {
                 <div className="d-flex justify-content-center">
                   <button type="submit" className="btn btn-primary btn-sm mr-1"  onClick={this.doLogin} >Login</button>
                 
-                  <a className="btn btn-primary btn-sm mr-1" href="/r/signupform" style={{ color: "white" }}> Sign Up </a>
+                  <a className="btn btn-primary btn-sm mr-1" href="/signup" style={{ color: "white" }}> Sign Up </a>
 
                 </div>
 

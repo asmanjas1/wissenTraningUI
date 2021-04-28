@@ -8,7 +8,6 @@ import NotFound from './pages/commonComponents/NotFound.js';
 import Login from './pages/LoginPage/Login';
 import AdminLandingPage from './pages/AdminLandingPage/AdminLandingPage.js';
 import UserLandingPage from './pages/UserLandingPage/UserLandingPage.js';
-import Signup from './pages/SignUpPage/Signup';
 
 import './App.css';
 
@@ -35,7 +34,6 @@ class App extends React.Component {
                 			<Route path="/r/login" component={Login}/>
                 			<Route path="/r/adminLandingPage" component={AdminLandingPage}/>
                 			<Route path="/r/userLandingPage" component={UserLandingPage}/>
-                			<Route path="/r/signup" component={Signup}/>
                 			<Route path="*" component={NotFound} />
             			</Switch>
         			</div>

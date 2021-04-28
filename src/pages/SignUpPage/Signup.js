@@ -1,5 +1,6 @@
 import React from 'react';
 import './Signup.css';
+import axios from 'axios';
 
 class Signup extends React.Component {
   constructor() {
@@ -84,6 +85,31 @@ class Signup extends React.Component {
   
   }
 
+  exampleAxiosClick = () => {
+    let user = {
+      'name': 'ashu',
+      'email': 'ashu1@gmail.com',
+      'password': '8699936575'
+    }
+console.log(user);
+  let headers = {
+      'Accept': 'application/json'
+    };
+
+    let config = {
+      headers: headers
+    };
+
+    let url = "http://localhost:8081/userController/signUp";
+  axios.post(url, user, config)
+      .then(response => {
+        console.log(response);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
+
 
 
 
@@ -120,7 +146,9 @@ render(){
             <input type="password" className="input-field" placeholder="Enter Password" style={{ width: 300 }} onChange={(event) => { this.setState({ password: event.target.value }) }} />
             <p data-toggle="tooltip" data-placement="top" title="Password should have minimun 8 character including atleast one Uppercase &Lower case alphabets,one digit and one special characters(@,_)" style={{ color: "red" }}>{this.state.passwordError}</p>
 
-            <button class="btn btn-primary btn-sm mr-1" onClick={() => this.submit()}>SIGN UP</button>
+            <button className="btn btn-primary btn-sm mr-1" onClick={() => this.submit()}>SIGN UP</button>
+
+             <button className="btn btn-primary btn-sm mr-1" onClick={() => this.exampleAxiosClick()}>SIGN UP1</button>
           </div>
         </div>
 
