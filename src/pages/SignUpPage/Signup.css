@@ -16,3 +16,13 @@
     {
     	float: left;
     	 clear: left;    }
+     
+     .success
+     {
+      color: "green";
+     }
+      
+      .fail
+      {
+        color: "red";
+      }

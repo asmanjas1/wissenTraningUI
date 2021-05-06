@@ -8,9 +8,9 @@ export function saveLocalPwd(object)
     localStorage.setItem('pwd', JSON.stringify(object));
 }
 
-export function saveLocalfname(object)
+export function saveLocalemail(object)
 {
-    localStorage.setItem('fName', JSON.stringify(object));
+    localStorage.setItem('email', JSON.stringify(object));
 }
 
 export function saveLocallname(object)
