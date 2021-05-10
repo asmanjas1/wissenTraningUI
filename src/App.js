@@ -43,7 +43,6 @@ class App extends React.Component {
                 			<Route path="/r/login" component={Login}/>
                 			<Route path="/r/adminLandingPage" component={AdminLandingPage}/>
                 			<Route path="/r/userLandingPage" component={UserLandingPage}/>
-                            <Route path="/r/userLandingPage" component={UserLandingPage}/>
                 			<Route path="/r/signup" component={Signup}/>
                 			<Route path="/r/adminactionpage" component={AdminAction}/>
                 			<Route path="/r/myprofile" component={Profile}/>

@@ -1,27 +1,18 @@
 import React from 'react';
 
-import {doLogout} from '../AppUtills/AppUtills.js';
+import {doLogout, getUserObj} from '../AppUtills/AppUtills.js';
 import './Navigationbar.css';
 import { NavDropdown } from 'react-bootstrap';
 
 
-
- 
-
-
 class Nbar extends React.Component {
-  
-
-      // urlmatch=window.location.href.match(/adminLandingPage/)
-      //isUserAdmin=localStorage.getItem('user').match(/wissen@gmail.com/)
-      
 
     render() {
 
-             var user=localStorage.getItem('user');
-             console.log( JSON.stringify(user).isAdmin);
+             var user = getUserObj();
+             console.log( user);
 
-             var isUserAdmin=false;
+             var isUserAdmin = user.isAdmin;
        return (
 
           <div>
@@ -33,7 +24,7 @@ class Nbar extends React.Component {
          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
          <span className="navbar-toggler-icon"></span>
          </button>
-        <i className="fa fa-user fa-lg username1" >   {localStorage.getItem('user')}</i> 
+        <i className="fa fa-user fa-lg username1" >   {getUserObj().name}</i> 
        <ul className="navbar-nav ml-auto">
       
        <NavDropdown title="Services" id="basic-nav-dropdown">

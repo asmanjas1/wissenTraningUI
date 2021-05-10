@@ -5,7 +5,7 @@ import axios from 'axios';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
 
-import {saveLocalUsr, saveLocalisAdmin}  from '../AppUtills/AppUtills';
+import {saveLocalUsr, routingUserType}  from '../AppUtills/AppUtills';
 
 
 class Login extends React.Component {
@@ -30,8 +30,6 @@ class Login extends React.Component {
  
 
   handleChange(e) {
-
-    
     let fields = this.state.fields;
     fields[e.target.name] = e.target.value;
     this.setState({
@@ -75,36 +73,18 @@ class Login extends React.Component {
 
        axios.post(url, user, config)
       .then(response => {
+        let userObj = response.data;
+        this.setState({isSuccess:true})
 
-        this.setState({isSuccess:true,isAdmin:response.data.isAdmin})
-        //saveLocalisAdmin(response.data.name);
-         console.log(response.data);    
+        saveLocalUsr(userObj);
 
-        saveLocalUsr(response.data);
-        console.log(response);  
-       // routingUserType();
-
-       let userObj = response.data;
-          if( userObj ) {
-              let userType =userObj.isAdmin;
-            if(userType)
-            {
-                window.location.href = "/r/adminLandingPage";
-
-            }
-             else
-             {
-                window.location.href = "/r/userLandingPage";
-
-             }
-               }
-
-          })
-         .catch(error => {
+        routingUserType();
+        })
+        .catch(error => {
           this.setState({popuptitle:"Error!", isSuccess:false,})
           this.toggle()
           console.log(error.response);
-           });
+        });
 
       
     }
@@ -136,14 +116,6 @@ class Login extends React.Component {
       formIsValid = false;
       errors["Userpassword"] = "*Please enter your password.";
     }
-
-    if (typeof fields["Userpassword"] !== "undefined") {
-      if (!fields["Userpassword"].match(/^.*(?=.{8,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%&]).*$/)) {
-        formIsValid = false;
-        errors["Userpassword"] = "*Incorrect password.";
-      }
-    }
-
 
     this.setState({
       errors: errors
@@ -192,13 +164,6 @@ class Login extends React.Component {
                   </div>
                  
                 </div>
-
-                  <div className="form-check ">
-                  <input type="checkbox" className="form-check-input" id="exampleCheck1" />
-                  <label className="form-check-label" for="exampleCheck1">Remember me</label>
-                   </div>
-  
-
                
          <div className="d-flex justify-content-center">
            <button className="btn btn-primary btn-sm mr-1"  onClick= {this.doLogin}>Login</button>

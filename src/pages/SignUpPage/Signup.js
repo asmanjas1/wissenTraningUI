@@ -18,31 +18,22 @@ class Signup extends React.Component {
 		 popupmessage:"",
 		 popuptitle:"",
 		 isSuccess:true,
-		 username:"",
-		
-
-			
-		 
-		 // formIsValid: true
-		
+		 username:"",		
 		}
 
 		 this.handleChange = this.handleChange.bind(this);
 		this.doSignIn = this.doSignIn.bind(this);
-	 this.toggle = this.toggle.bind(this);
+	 	this.toggle = this.toggle.bind(this);
 		 };
 
 
 
 	handleChange(e) {
-
-		 
 		let fields = this.state.fields;
 		fields[e.target.name] = e.target.value;
 		this.setState({
 			fields
 		});
-		
 	}
 
 	toggle() {
@@ -85,32 +76,16 @@ class Signup extends React.Component {
 
 				this.setState({popuptitle:"Success!",isSuccess:true})
 				this.toggle()
-				console.log(response); 
-
-
-				
-				
+				console.log(response);	
 			})
 			.catch(error => {
-			 
-						 
-				 
 					this.setState({popuptitle:"Error!",
 						popupmessage:error.response.data.message,
 						isSuccess:false,
-					 
-						
 					})
-				
-				 this.toggle()
-					console.log(error.response.data.message);
-
-
-			});
-			
-			
-		
-			
+				this.toggle()
+				console.log(error.response.data.message);
+			});	
 		}
 	 
 
@@ -160,20 +135,20 @@ class Signup extends React.Component {
 			errors["Userpassword"] = "*Please enter your password.";
 		}
 
-		if (typeof fields["Userpassword"] !== "undefined") {
-			if (!fields["Userpassword"].match(/^.*(?=.{8,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%&]).*$/)) {
+		/*if (typeof fields["Userpassword"] !== "undefined") {
+			//!fields["Userpassword"].match(/^.*(?=.{8,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%&]).*$/)
+			if (!fields["Userpassword"]) {
 				formIsValid = false;
 				isPassword=false;
-				errors["Userpassword"] = "*Incorrect password.";
+				errors["Userpassword"] = "*Invalid password.";
 			}
-		}
+		}*/
 
 		 if ( isPassword && !fields["Userconfirmpassword"]  ) {
 			formIsValid = false;
 			errors["Userconfirmpassword"] = "*Please confirm your password.";
 		}
-
-
+		
 		if ( isPassword && typeof fields["Userconfirmpassword"] !== "undefined"  ) {
 			if (!fields["Userconfirmpassword"].match(fields["Userpassword"])) {
 				formIsValid = false;
@@ -192,16 +167,7 @@ class Signup extends React.Component {
 
 	}
 
-
-
-	
-
-
-
 render(){
-
-	
-	
 	return (
 		
 				<div className="container-fluid" >
@@ -250,7 +216,7 @@ render(){
 									 <div className="fontpassword">
 											 <i className="fa fa-key fa-lg"></i>
 											 <input type="password" name="Userconfirmpassword" onChange={this.handleChange} className="form-control " style={{ textAlign: "center" }} placeholder="Confirm password"
-												id="pwd" />
+												id="pwd1" />
 												<p data-toggle="tooltip" data-placement="top" title="Confirm password should be same as password " style={{ color: "red" }}>{this.state.errors.Userconfirmpassword}</p>
 
 									 </div>

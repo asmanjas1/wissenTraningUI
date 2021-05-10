@@ -353,7 +353,7 @@ render() {
     return (
    <div>
       <div className="container-fluid" >
-            <h1> AdminAction page</h1>
+            <h4> AdminActions</h4>
           <div className="row  justify-content-center ">
 
               <div className="col-6 col-sm-4 col-md-3">
