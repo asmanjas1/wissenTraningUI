@@ -13,10 +13,15 @@ class Nbar extends React.Component {
   
 
       // urlmatch=window.location.href.match(/adminLandingPage/)
-      isUserAdmin=localStorage.getItem('user').match(/wissen@gmail.com/)
+      //isUserAdmin=localStorage.getItem('user').match(/wissen@gmail.com/)
+      
 
     render() {
 
+             var user=localStorage.getItem('user');
+             console.log( JSON.stringify(user).isAdmin);
+
+             var isUserAdmin=false;
        return (
 
           <div>
@@ -35,13 +40,13 @@ class Nbar extends React.Component {
          <NavDropdown.Item href="/r/assessment" >Assessment</NavDropdown.Item>
          <NavDropdown.Divider  />
          <NavDropdown.Item href="/r/references" >References</NavDropdown.Item>
-         { this.isUserAdmin && <NavDropdown.Divider  />}
+         { isUserAdmin && <NavDropdown.Divider  />}
     
-           {this.isUserAdmin && <NavDropdown.Item href="/r/adminactions"  >Admin Actions</NavDropdown.Item>}
+           {isUserAdmin && <NavDropdown.Item href="/r/adminactionpage"  >Admin Actions</NavDropdown.Item>}
 
        </NavDropdown>
        <NavDropdown className="navmenutextcolor" title="Account" id="basic-nav-dropdown" >
-         <NavDropdown.Item href="/r/myprofile"  >My Profile</NavDropdown.Item>
+         <NavDropdown.Item href="/r/myprofile">My Profile</NavDropdown.Item>
          <NavDropdown.Divider  />
         <NavDropdown.Item href="/r/assessmenttaken" >Assessment Taken</NavDropdown.Item>
          

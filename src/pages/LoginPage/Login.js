@@ -1,8 +1,11 @@
 import React from 'react';
 import 'font-awesome/css/font-awesome.min.css';
 import './Login.css';
+import axios from 'axios';
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
-import {saveLocalUsr, routingUserType}  from '../AppUtills/AppUtills';
+
+import {saveLocalUsr, saveLocalisAdmin}  from '../AppUtills/AppUtills';
 
 
 class Login extends React.Component {
@@ -11,18 +14,20 @@ class Login extends React.Component {
     this.state = {
       fields: {},
       errors: {},
-     // formIsValid: true
+       modal: false,
+     popuptitle:"",
+     isSuccess:true,
+     username:"",
     
     }
 
     this.handleChange = this.handleChange.bind(this);
     this.doLogin = this.doLogin.bind(this);
+     this.toggle = this.toggle.bind(this);
     
   };
 
-  componentDidMount() {
-    routingUserType();
-  }
+ 
 
   handleChange(e) {
 
@@ -35,18 +40,72 @@ class Login extends React.Component {
     
   }
 
+  toggle() {
+    this.setState({
+      modal: !this.state.modal
+    });
+  }
+
   doLogin(e) {
     e.preventDefault();
 
     if (this.validateForm()) {
      
-      let fields = {};
-      fields["Username"] = "";
-      fields["Userpassword"] = "";
-      this.setState({ fields: fields });
-      saveLocalUsr(this.state.fields["Username"]);
+     
+     // saveLocalUsr(this.state.fields["Username"]);
       
-      routingUserType();
+     // routingUserType();
+
+       let user = {
+      'email': this.state.fields.Useremail,
+      'password': this.state.fields.Userpassword,
+       }
+
+         console.log(user);
+       let headers = {
+      'Accept': 'application/json'
+       };
+
+        let config = {
+      headers: headers
+      };
+
+       let url = "http://localhost:8081/userController/login";
+
+
+       axios.post(url, user, config)
+      .then(response => {
+
+        this.setState({isSuccess:true,isAdmin:response.data.isAdmin})
+        //saveLocalisAdmin(response.data.name);
+         console.log(response.data);    
+
+        saveLocalUsr(response.data);
+        console.log(response);  
+       // routingUserType();
+
+       let userObj = response.data;
+          if( userObj ) {
+              let userType =userObj.isAdmin;
+            if(userType)
+            {
+                window.location.href = "/r/adminLandingPage";
+
+            }
+             else
+             {
+                window.location.href = "/r/userLandingPage";
+
+             }
+               }
+
+          })
+         .catch(error => {
+          this.setState({popuptitle:"Error!", isSuccess:false,})
+          this.toggle()
+          console.log(error.response);
+           });
+
       
     }
     
@@ -60,15 +119,15 @@ class Login extends React.Component {
     //var Userfilter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
 
 
-    if (!fields["Username"]) {
+    if (!fields["Useremail"]) {
       formIsValid = false;
-      errors["Username"] = "*Please enter your username.";
+      errors["Useremail"] = "*Please enter your e-mail.";
     }
     
-    if (typeof fields["Username"] !== "undefined") {
-      if (!fields["Username"].match(/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/)) {
+    if (typeof fields["Useremail"] !== "undefined") {
+      if (!fields["Useremail"].match(/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/)) {
         formIsValid = false;
-        errors["Username"] = "*Enter valid e-mail";
+        errors["Useremail"] = "*Enter valid e-mail";
       }
     }
 
@@ -112,9 +171,9 @@ class Login extends React.Component {
 
                   <div className="fontuser">
                     <i className="fa fa-user fa-lg"></i>
-                    <input type="username" name="Username"  onChange={this.handleChange} className="form-control" placeholder="Enter username " style={{ textAlign: "center" }}
+                    <input type="useremail" name="Useremail"  onChange={this.handleChange} className="form-control" placeholder="Enter username " style={{ textAlign: "center" }}
                       id="usr" />
-                    <p  style={{ color: "red" }}>{this.state.errors.Username}</p>
+                    <p  style={{ color: "red" }}>{this.state.errors.Useremail}</p>
 
                   </div>
 
@@ -140,8 +199,20 @@ class Login extends React.Component {
                    </div>
   
 
-                <div className="d-flex justify-content-center">
-                  <button type="submit" className="btn btn-primary btn-sm mr-1"  onClick={this.doLogin} >Login</button>
+               
+         <div className="d-flex justify-content-center">
+           <button className="btn btn-primary btn-sm mr-1"  onClick= {this.doLogin}>Login</button>
+             <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
+                 
+                  {!this.state.isSuccess && <ModalHeader toggle={this.toggle} style={{ color: "red" }} ><b>{this.state.popuptitle}</b></ModalHeader>}
+                  {!this.state.isSuccess && <ModalBody><p>The email or password you entered  is incorrect</p></ModalBody>}
+                
+                 <ModalFooter>
+                    <Button color="primary"  onClick={this.toggle}>OK</Button>
+                </ModalFooter>
+
+              </Modal>
+         
                 
                   <a className="btn btn-primary btn-sm mr-1" href="/signup" style={{ color: "white" }}> Sign Up </a>
 

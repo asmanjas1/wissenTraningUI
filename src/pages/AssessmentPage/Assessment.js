@@ -60,6 +60,7 @@ class Assessment extends React.Component {
                  <p><b>Select Technology</b></p>
                   <Select options={this.state.selectOptions} onChange={this.handleChange.bind(this)} />
               </div>
+
           </div>
           <hr/>
            <div class="jumbotron jumbotron-fluid">
