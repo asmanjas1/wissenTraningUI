@@ -23,6 +23,7 @@
     "react-fontawesome": "^1.7.1",
     "react-image": "^4.0.3",
     "react-navbar-dropdown": "^1.4.3",
+    "react-simple-tooltip": "^2.6.3",
     "react-router-dom": "^5.2.0",
     "react-scripts": "^4.0.3",
     "react-select": "^4.3.0",
