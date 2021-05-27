@@ -34,8 +34,15 @@ class Nbar extends React.Component {
          { isUserAdmin && <NavDropdown.Divider  />}
     
            {isUserAdmin && <NavDropdown.Item href="/r/adminactionpage"  >Admin Actions</NavDropdown.Item>}
+           { isUserAdmin && <NavDropdown.Divider  />}
+              {isUserAdmin && <NavDropdown.Item href="/r/UserDetailsPage">User Details</NavDropdown.Item>}
 
        </NavDropdown>
+          
+         
+       
+
+
        <NavDropdown className="navmenutextcolor" title="Account" id="basic-nav-dropdown" >
          <NavDropdown.Item href="/r/myprofile">My Profile</NavDropdown.Item>
          <NavDropdown.Divider  />

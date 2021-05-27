@@ -14,6 +14,9 @@ import  Profile from './pages/ProfilePage/ProfilePage.js';
 import References from './pages/ReferencesPage/References.js';
 import Assessment from './pages/AssessmentPage/Assessment.js';
 import AssessmentTakenPage from './pages/AssessmentTakenPage/AssessmentTakenPage.js';
+import UserDetailsPage from './pages/UserDetailsPage/UserDetailsPage.js';
+
+
 
 
 import './App.css';
@@ -49,6 +52,8 @@ class App extends React.Component {
                 			<Route path="/r/references" component={References}/>
                 			<Route path="/r/assessment" component={Assessment}/>
                             <Route path="/r/assessmenttaken" component={AssessmentTakenPage}/>
+                            <Route path="/r/UserDetailsPage" component={UserDetailsPage}/>
+
 
                 			<Route path="*" component={NotFound} />
             			</Switch>
