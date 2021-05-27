@@ -1,0 +1,39 @@
+.Quiz{
+    text-align: center;
+    font-family: Arial;
+}
+
+.selected {
+    background: yellow !important;
+}
+
+.options {
+    padding: 5px;
+    border: 1px solid #000;
+    cursor: pointer;
+    width:80%;
+    background-color: white;
+   
+    
+}
+
+ul {
+    list-style-type: none;
+}
+
+ul li {
+    margin: 5px;
+}
+
+.qtns{
+
+    
+    justify-content:center;    
+    color:black;
+    font-family: 'Segoe UI',;
+    font-size: 18px;
+    
+ }
+
+ 
+ 
