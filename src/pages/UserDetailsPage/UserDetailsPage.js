@@ -8,7 +8,7 @@ import axios from 'axios';
 import ToolkitProvider, { Search } from "react-bootstrap-table2-toolkit";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import 'font-awesome/css/font-awesome.min.css';
-import style from './UserDetailsPage.css';
+
 
 class UserDetailsPage extends Component {
   
