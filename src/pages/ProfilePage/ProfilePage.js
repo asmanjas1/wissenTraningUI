@@ -203,11 +203,7 @@ handleSubmitSkills()
   }
  
   
-  render() {
-  	console.log(this.state.user);
-  	console.log(this.state.skills);
-  	console.log(this.state.userdetails.address);
-  	
+  render() { 	
   	
     return (
    <div >
@@ -278,7 +274,7 @@ handleSubmitSkills()
 
        			<div className="row  justify-content-center ">
        				<div className="col-6 col-sm-4 col-md-3">
-                	 	<spam><b>Select to update</b></spam>
+                	 	<span><b>Select to update</b></span>
                  	 	<Select options={this.state.profileDetails}  onChange={this.handleSelect}  />
               		</div>
               	</div>
@@ -292,7 +288,7 @@ handleSubmitSkills()
                   	 	<input type="text"  name="Name" placeholder="Enter name"  className="form-control"  onChange={ this.handleUpdatename}  style={{textAlign:"center"}} />
                  	 </div>
                  	<div className="col-6 col-sm-4 col-md-3">
-                 	 		<spam><pre> </pre></spam>
+                 	 		<span><pre> </pre></span>
                  	        <button className="btn btn-primary btn-sm " onClick={this.upateUserDetails} >Submit</button>
                  	</div> 
               	</div>}
@@ -306,7 +302,7 @@ handleSubmitSkills()
                  	 	 
               		</div>
               		<div className="col-6 col-sm-4 col-md-3">
-                 	 		<spam><pre> </pre></spam>
+                 	 		<span><pre> </pre></span>
                  	        <button className="btn btn-primary btn-sm " onClick={this.upateUserDetails}>Submit</button>
                  	</div> 
               	</div>}
@@ -319,7 +315,7 @@ handleSubmitSkills()
                  	 	 
               		</div>
               		<div className="col-6 col-sm-4 col-md-3">
-                 	 		<spam><pre> </pre></spam>
+                 	 		<span><pre> </pre></span>
                  	        <button className="btn btn-primary btn-sm " onClick= {this.upateUserDetails} >Submit</button>
                  	</div> 
               	</div>}
@@ -343,7 +339,7 @@ handleSubmitSkills()
                  	 			<input type="text"  name="Experience" placeholder="Add Experience" className="form-control" style={{textAlign:"center"}} onChange={e =>this.handleChangeExperience(i,e)}/>
                  	 		</div>
                  	 		<div className="col-6 col-sm-4 col-md-3">
-                 	 			 <spam><pre> </pre></spam>                	 			 
+                 	 			 <span><pre> </pre></span>                	 			 
                  	 	        { i>0 &&  <button className="btn btn-primary btn-sm "  onClick={() => this.removeClick(i)}>Remove</button>}
 
 			               	</div>

@@ -1,26 +1,11 @@
 import React,{ Component } from 'react';
-import axios from 'axios';
-import Select from 'react-select';
 import Quiz from'../Quiz/Quiz.js';
 
 
-class Assessment extends React.Component {
-  constructor(props){
-    super(props)
-    
-  }
-
+function Assessment(){
    
-
-	 render() {
-    
-	 	return (
-  <div>
-	 <Quiz/>
-
-  </div>
-
-	 		);
-	 }
+return (
+		<Quiz/>
+);
 }
 export default Assessment;

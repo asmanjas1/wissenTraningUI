@@ -4,16 +4,11 @@ import {doLogout, getUserObj} from '../AppUtills/AppUtills.js';
 import './Navigationbar.css';
 import { NavDropdown } from 'react-bootstrap';
 
+function Nbar() {
 
-class Nbar extends React.Component {
-
-    render() {
-
-             var user = getUserObj();
-             console.log( user);
-
-             var isUserAdmin = user.isAdmin;
-       return (
+  let user = getUserObj();
+  let isUserAdmin = user.isAdmin;
+  return (
 
           <div>
          
@@ -33,21 +28,14 @@ class Nbar extends React.Component {
          <NavDropdown.Item href="/r/references" >References</NavDropdown.Item>
          { isUserAdmin && <NavDropdown.Divider  />}
     
-           {isUserAdmin && <NavDropdown.Item href="/r/adminactionpage"  >Admin Actions</NavDropdown.Item>}
+           {isUserAdmin && <NavDropdown.Item href="/r/adminActionPage"  >Admin Actions</NavDropdown.Item>}
            { isUserAdmin && <NavDropdown.Divider  />}
               {isUserAdmin && <NavDropdown.Item href="/r/UserDetailsPage">User Details</NavDropdown.Item>}
 
        </NavDropdown>
-          
-         
-       
-
 
        <NavDropdown className="navmenutextcolor" title="Account" id="basic-nav-dropdown" >
          <NavDropdown.Item href="/r/myprofile">My Profile</NavDropdown.Item>
-         <NavDropdown.Divider  />
-        <NavDropdown.Item href="/r/assessmenttaken" >Assessment Taken</NavDropdown.Item>
-         
         
        </NavDropdown>
        <button type="button" className="btn btn-outline-primary btn-sm" onClick={doLogout}>Logout</button>
@@ -60,7 +48,6 @@ class Nbar extends React.Component {
          
              
           </div>
-       );
-    }
- }
+  );
+}
  export default Nbar;

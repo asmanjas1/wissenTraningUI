@@ -5,10 +5,6 @@ import '../AdminActionPage/AdminActionPage.css';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import 'font-awesome/css/font-awesome.min.css';
 
-
-
-
-
 class AdminAction extends React.Component {
   constructor(props){
     super(props)
@@ -345,15 +341,10 @@ class AdminAction extends React.Component {
 
 
 render() {
-    console.log(this.state.selectedSection);
-     console.log(this.state.selectedTechnology);
-      console.log(this.state.reffTitle);
-      console.log(this.state.reffLink);
     
     return (
    <div>
       <div className="container-fluid" >
-            <h4> AdminActions</h4>
           <div className="row  justify-content-center ">
 
               <div className="col-6 col-sm-4 col-md-3">

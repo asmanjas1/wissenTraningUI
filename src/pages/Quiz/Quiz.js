@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-//import {QuizData} from '../QuizData/QuizData.js';
 import './Quiz.css';
 import axios from 'axios';
 import Select from 'react-select';
@@ -301,7 +300,6 @@ class Quiz extends React.Component {
 
     <div>
         <div className="container-fluid" >
-            <h1> assessment page</h1>
           <div className="row  justify-content-center ">
               <div className="col-6 col-sm-4 col-md-3">
                  <p><b>Select Technology</b></p>

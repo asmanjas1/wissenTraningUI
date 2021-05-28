@@ -76,7 +76,7 @@ renderTableHeader = () => {
             <div className="col-6 col-sm-4 ">
         
         <div>
-         <i class="fa fa-search" aria-hidden="true"> </i>
+         <i className="fa fa-search" aria-hidden="true"> </i>
          <input type="text" style={{ 'fontFamily': "Arial",'marginTop':'10%', width: "400px"}} placeholder="  Search .." value={this.state.search}
          onChange={this.updateSearch.bind(this)}/>
         </div>

@@ -1,5 +1,3 @@
-
-
 import React, { Component, StyleSheet } from 'react';
 import BootstrapTable from "react-bootstrap-table-next";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -18,7 +16,7 @@ class UserDetailsPage extends Component {
   {
     return(
        <div>
-       <button class="btn btn-primary" onClick={() => this.viewInfo(row.address)} ><i class="fa fa-home"></i></button>
+       <button className="btn btn-primary" onClick={() => this.viewInfo(row.address)} ><i className="fa fa-home"></i></button>
        
        </div>
       )
@@ -31,6 +29,7 @@ class UserDetailsPage extends Component {
   {
     Items:[],
     modal: false,
+    currentRowSkill: [],
     
     newInfoModal:false,
     newInfoModal2:false,
@@ -63,7 +62,7 @@ class UserDetailsPage extends Component {
       sort: true
      },
       {
-     dataField: 'skills.skill',
+     dataField: 'anyFieldName',
       text: 'skill',
       formatter: (cell, row) => this.userFormatter(cell, row) ,
       sort: true
@@ -86,10 +85,11 @@ class UserDetailsPage extends Component {
     });
   }
 
-  toogleInfo2()
+  toogleInfo2 = (row) => 
 
   {
-    this.setState({modal:true})
+    let skill = row.skills;
+    this.setState({modal:true, currentRowSkill: skill})
   }
  
 
@@ -116,27 +116,11 @@ class UserDetailsPage extends Component {
   }
 
   userFormatter = (cell, row) => {
-   
-        return row["skills"] && row.skills.map((item, index) => {
-
-        return (
-            <div key={index} >
-
-              <Button class="btn btn-primary" onClick={this.toogleInfo2.bind(this)}>show</Button>
-        <Modal isOpen={this.state.modal}>
-          <ModalHeader toggle={this.toggle}>Modal title</ModalHeader>
-          <ModalBody>
-          {item.skill}
-          </ModalBody>
-          <ModalFooter>
-         
-            <Button color='btn btn-primary' onClick={this.handleClose2}>Cancel</Button>
-          </ModalFooter>
-        </Modal>
-        </div>
-           )
-      }
-   ) 
+    if(row.skills && row.skills.length > 0) {
+      return (
+        <Button className="btn btn-primary" onClick={ () => this.toogleInfo2(row) }>Show</Button>
+      );
+    }
 }
 
 
@@ -171,6 +155,13 @@ onChangeHandler(e)
   this.setState({Items: newArray})
 }
 
+renderSkills = (skills) => {
+  let map = skills.map((item, index) => (
+    <div key ={index}>{item.skill} with exp {item.experience}</div> 
+  ));
+
+  return map;
+}
 
 
   render() {
@@ -193,7 +184,7 @@ onChangeHandler(e)
          <BootstrapTable 
         striped
         hover
-        keyField='id' 
+        keyField='email' 
         data={ this.state.Items } 
         columns={ this.state.columns }
       
@@ -201,7 +192,7 @@ onChangeHandler(e)
           />
           
         
-         <Button color = "#fff" onClick = {this.toogleInfo.bind(this)}></Button>
+         
          <Modal isOpen = {this.state.newInfoModal} size = "lg">
          <ModalHeader>Address</ModalHeader>
          <ModalBody>
@@ -209,9 +200,21 @@ onChangeHandler(e)
            {localStorage.getItem("address")}
          </ModalBody>
          <ModalFooter>
-         <button class="btn btn-primary" onClick={this.handleClose}>Cancel</button>
+         <button className="btn btn-primary" onClick={this.handleClose}>Cancel</button>
          </ModalFooter>
          </Modal>
+
+
+         <Modal isOpen={this.state.modal}>
+          <ModalHeader>Skill Set</ModalHeader>
+          <ModalBody>
+          {this.renderSkills(this.state.currentRowSkill)}
+          </ModalBody>
+          <ModalFooter>
+         
+            <Button color='btn btn-primary' onClick={this.handleClose2}>Cancel</Button>
+          </ModalFooter>
+        </Modal>
       
         
       </div>
